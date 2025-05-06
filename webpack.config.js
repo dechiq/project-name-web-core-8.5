@@ -2,21 +2,21 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   // Entry file
   entry: {
    main: './src/js/index.js',
-   index1: './src/js/index2.js',
-   index2: './src/js/index3.js',
-   index3: './src/js/index4.js',
+  
     
   },
 
   // Output file
   output: {
-    filename: './js/bundle.js',
-    path: path.resolve(__dirname, 'dist') // Add output path
+    filename: '.js/.bundle.js',
+    path: path.resolve(__dirname, 'dist'), // Add output path
+    clean: true, // Clean the output directory before emit
   },
 
   // Source maps for easier debugging
@@ -75,9 +75,12 @@ module.exports = {
   },
   plugins: [
     // Include html file, styles and scripts will be automatically injected
+    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       title: 'Webpack 5 Starter',
       template: './src/index.html',
+      chunks: ['main', 'index1', 'index2', 'index3'], // Include all entry points
+      filename: 'index.html', // Output file name
       inject: true,
       minify: {
         removeComments: true,
