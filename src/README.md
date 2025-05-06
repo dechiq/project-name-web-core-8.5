@@ -1,0 +1,1 @@
+https://dechiq.github.io/project-name-web-core-8.5/
