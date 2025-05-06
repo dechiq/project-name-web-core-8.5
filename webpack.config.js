@@ -2,10 +2,11 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+
 
 module.exports = {
   // Entry file
+  mode: 'development',
   entry: {
    main: './src/js/index.js',
   
@@ -16,7 +17,7 @@ module.exports = {
   output: {
     filename: '.js/.bundle.js',
     path: path.resolve(__dirname, 'dist'), // Add output path
-    clean: true, // Clean the output directory before emit
+    
   },
 
   // Source maps for easier debugging
@@ -75,7 +76,7 @@ module.exports = {
   },
   plugins: [
     // Include html file, styles and scripts will be automatically injected
-    new CleanWebpackPlugin(),
+    
     new HtmlWebpackPlugin({
       title: 'Webpack 5 Starter',
       template: './src/index.html',
