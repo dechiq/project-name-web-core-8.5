@@ -15,7 +15,7 @@ module.exports = {
 
   // Output file
   output: {
-    filename: '.js/.bundle.js',
+    filename: 'js/.bundle.js',
     path: path.resolve(__dirname, 'dist'), // Add output path
     
   },
